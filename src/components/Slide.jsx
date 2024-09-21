@@ -1,12 +1,11 @@
-import welcome1 from "../assets/images/deneme.jpg";
-import welcome2 from "../assets/images/deneme1.jpg";
-import welcome3 from "../assets/images/deneme2.jpg";
-import img4 from "../assets/images/deneme3.jpg";
+import welcome1 from "../assets/images/sliderfoto.jpg";
+import welcome2 from "../assets/images/sliderfoto2.jpg";
+import welcome3 from "../assets/images/sliderfoto3.jpg";
 import { useState, useEffect } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-const preloadSrcList = [welcome1, welcome2, welcome3, img4];
+const preloadSrcList = [welcome1, welcome2, welcome3];
 
 function preloadImage(src) {
   return new Promise((resolve, reject) => {
@@ -24,7 +23,6 @@ const Slider = () => {
     <img alt="slide" key={0} src={welcome1} className="w-full h-auto object-cover" />,
     <img alt="slide" key={1} src={welcome2} className="w-full h-auto object-cover" />,
     <img alt="slide" key={2} src={welcome3} className="w-full h-auto object-cover" />,
-    <img alt="slide" key={3} src={img4} className="w-full h-auto object-cover" />,
   ];
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const Slider = () => {
   };
 
   return (
-    <div style={{ width: '1000px' }}  className="relative overflow-hidden left-32">
+    <div  className="relative overflow-hidden flex justify-center items-center w-full">
       <div
         className="flex transition-transform ease-out duration-1000"
         style={{ transform: `translateX(-${curr * 100}%)` }}

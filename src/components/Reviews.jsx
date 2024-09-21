@@ -1,181 +1,50 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 
 const reviews = [
   {
     id: 1,
-    name: "Eren",
+    name: "Clara",
     rating: 3,
     comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
+      "Good quality, but a bit pricey for what you get.",
     date: "2024-09-01",
   },
   {
-    id: 1,
-    name: "Ahmet",
+    id: 2,
+    name: "Alexis",
     rating: 1,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
+    comment: "Not satisfied with the quality. It could have been much better.",
+    date: "2024-09-02",
   },
   {
-    id: 1,
-    name: "Ayşe",
+    id: 3,
+    name: "Mia",
     rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
+    comment: "The fit wasn't great, but the material was okay.",
+    date: "2024-09-03",
   },
   {
-    id: 1,
-    name: "Eren",
-    rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
+    id: 4,
+    name: "Natalia",
     rating: 5,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
+    comment: "Loved it! Definitely will buy again.",
+    date: "2024-09-04",
   },
   {
-    id: 1,
-    name: "Eren",
-    rating: 5,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 5,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
+    id: 5,
+    name: "Anna",
     rating: 4,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
+    comment: "Good quality, but a bit pricey for what you get.",
+    date: "2024-09-05",
   },
   {
-    id: 1,
-    name: "Eren",
-    rating: 4,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 1,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 4,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 1,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 5,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
+    id: 6,
+    name: "Tanya",
     rating: 3,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 4,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 1,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 5,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 1,
-    name: "Eren",
-    rating: 2,
-    comment:
-      "Absolutely love the lingerie! The quality is exceptional and the fit is perfect.",
-    date: "2024-09-01",
-  },
-  {
-    id: 13,
-    name: "Tolga",
-    rating: 4,
-    comment: "Good value for the money.",
-    date: "2024-09-23",
+    comment: "It's okay, not bad but not great either.",
+    date: "2024-09-06",
   },
 ];
 
@@ -184,7 +53,6 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-// Calculate the number of people for each star rating
 const getRatingCounts = () => {
   const counts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
   reviews.forEach((review) => {
@@ -193,21 +61,22 @@ const getRatingCounts = () => {
   return counts;
 };
 
-// Calculate average rating
 const calculateAverageRating = () => {
   const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
   return (totalRating / reviews.length).toFixed(1);
 };
 
 const Review = ({ review }) => (
-  <div className="flex-none border border-gray-200 p-4 rounded-lg shadow-sm mb-4 mx-2 w-64">
+  <div className="flex-none border border-gray-200 p-4 rounded-lg shadow-sm mb-4 w-64">
     <div className="flex items-center mb-2">
       <h3 className="text-lg font-semibold">
         {review.name}
-        <span className="ml-2 text-green-500">✅</span>
+        <span className="ml-2 text-black">
+          <CheckBoxIcon />
+        </span>
       </h3>
     </div>
-    <div className="text-yellow-500 mb-2">
+    <div className="text-black mb-2">
       {"★".repeat(review.rating)}
       {"☆".repeat(5 - review.rating)}
     </div>
@@ -217,24 +86,11 @@ const Review = ({ review }) => (
 );
 
 const Reviews = () => {
-  const scrollContainer = useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFilteringOpen, setİsFilteringOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [isArrowRight, setIsArrowRight] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState("all");
-
-  const scrollLeft = () => {
-    if (scrollContainer.current) {
-      scrollContainer.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainer.current) {
-      scrollContainer.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -268,15 +124,17 @@ const Reviews = () => {
     setSelectedFilter(filter);
   };
 
-  const filteredReviews = reviews.filter((review) => {
-    if (selectedFilter === "highest") {
-      return review.rating >= 3;
-    } else if (selectedFilter === "lowest") {
-      return review.rating <= 2;
-    } else {
-      return true; // 'all' or other filter
-    }
-  });
+  const filteredReviews = reviews
+    .filter((review) => {
+      if (selectedFilter === "highest") {
+        return review.rating >= 3;
+      } else if (selectedFilter === "lowest") {
+        return review.rating <= 2;
+      } else {
+        return true; // 'all' or other filter
+      }
+    })
+    .slice(-4); // Only show the last 5 reviews
 
   return (
     <div className="relative max-w-full mx-auto p-6">
@@ -334,7 +192,7 @@ const Reviews = () => {
           )}
         </div>
 
-        <h2 className="text-2xl font-bold text-center flex-1">Reviews</h2>
+        <h2 className="text-2xl font-bold text-center flex-1">Latest Reviews</h2>
 
         {isFilteringOpen == true ? (
           <div className="relative flex items-center">
@@ -361,25 +219,8 @@ const Reviews = () => {
         </button>
       </div>
 
-      <button
-        onClick={scrollLeft}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-full"
-      >
-        ←
-      </button>
-
-      <button
-        onClick={scrollRight}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-full"
-      >
-        →
-      </button>
-
-      <div
-        ref={scrollContainer}
-        className="flex space-x-4 overflow-x-auto"
-        style={{ scrollBehavior: "smooth" }}
-      >
+      {/* Kutuları yanyana dizen flex container ve gap-4 ile boşluk ekliyoruz */}
+      <div className="flex flex-wrap justify-start gap-4">
         {filteredReviews.map((review) => (
           <Review key={review.id} review={review} />
         ))}

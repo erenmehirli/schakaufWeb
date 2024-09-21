@@ -25,19 +25,19 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full fixed top-0 z-50">
       {/* Üst Bant */}
       <div className="bg-black text-white text-sm p-2 text-center">
         Free Shipping on Orders Over $75
       </div>
 
       {/* Ana Navbar */}
-      <nav className="bg-white border-b border-gray-200 w-full">
+      <nav className="bg-white border-b  border-gray-200 w-full">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Sol Menü - Logo */}
             <div className="flex items-center">
-              <a href="#" className="text-2xl font-semibold">
+              <a href="/" className="text-2xl font-semibold">
                 Schakauf
               </a>
             </div>
@@ -61,10 +61,10 @@ const Navbar = () => {
 
             {/* Sağ Menü - Kullanıcı ve Sepet */}
             <div className="flex items-center space-x-4">
-              <a href="#" className="text-gray-700 hover:text-black">
+              <a href="/login" className="text-gray-700 hover:text-black">
                 <PersonOutlinedIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-700 hover:text-black">
+              <a href="/shopping-cart" className="text-gray-700 hover:text-black">
                 <ShoppingCartOutlinedIcon className="w-5 h-5" />
               </a>
             </div>
@@ -74,12 +74,12 @@ const Navbar = () => {
 
       {/* İkinci Menü */}
       <nav className="bg-gray-50 dark:bg-gray-100 w-full">
-        <div className="max-w-screen-xl px-4 py-3 mx-auto shadow-lg">
+        <div className=" px-4 py-3 mx-auto shadow-lg">
           <div className="relative flex items-center">
             <ul className="flex flex-row font-medium gap-6 space-x-8 pl-20 text-sm">
               <li>
                 <a
-                  href="#"
+                  href="/new-collections"
                   className="text-gray-900 dark:text-black font-semibold hover:underline"
                 >
                   New
@@ -166,6 +166,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      
     </div>
   );
 };

@@ -9,6 +9,8 @@ const Home = () => {
   
 
   <>
+  <br />
+  <br />
   <Slider/>
   <br />
   <br />

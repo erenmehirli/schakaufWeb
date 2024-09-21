@@ -1,11 +1,11 @@
 import React from "react";
 
-const Login = () => {
+const SignUp = () => {
   return (
     <div className="flex items-center justify-center min-h-screen w-full">
       <div className="w-full max-w-md p-10">
         <h2 className="text-4xl font-thin font-serif text-center mb-8">
-          Login
+          Sign Up
         </h2>
 
         <div className="flex flex-col gap-6 py-3">
@@ -27,11 +27,8 @@ const Login = () => {
           </button>
 
           <div className="flex flex-col items-center text-sm">
-            <a href="/sign-up" className="text-gray-500 hover:underline">
-              New Customer? Create Account
-            </a>
-            <a href="#" className="text-gray-500 hover:underline mt-2">
-              Forgot your password?
+            <a href="/login" className="text-gray-500 hover:underline">
+              Already Have an Account?
             </a>
           </div>
         </div>
@@ -40,4 +37,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
